@@ -1,0 +1,168 @@
+/* Remove the navbar's default margin-bottom and rounded borders */
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+.row.content {
+    height: 450px
+}
+
+/* Set gray background color and 100% height */
+.sidenav {
+    padding-top: 20px;
+    background-color: #f1f1f1;
+    height: 100%;
+}
+
+/* Set black background color, white text and some padding */
+footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+}
+
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+    .sidenav {
+        height: auto;
+        padding: 15px;
+    }
+
+    .row.content {
+        height: auto;
+    }
+}
+
+#viewpoint_perspective {
+    padding-top: 0.05em;
+    padding-bottom: 0.5em;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 13px;
+    color: white;
+    text-align: center;
+    background-color: #212529;
+}
+
+#viewpoint_perspective a {
+    color: #0000EE;
+    font-size: 15px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.warning_message {
+    color: red;
+    border-style: solid;
+    padding: 20px;
+    font-size: 110%;
+}
+
+.calendar {
+    width: 300px;
+    padding-top: 1em;
+    background-color: #fff;
+    box-shadow: 0 5px 50px rgba(#000, 0.5);
+    border-radius: 8px;
+}
+
+.calendar__picture {
+    position: relative;
+    height: 200px;
+    padding: 20px;
+    color: #fff;
+    background: #262626 url("https://th.bing.com/th/id/OIP.aBM_2jn3Ar-ACQHK7oyb-wHaFP?rs=1&pid=ImgDetMain") no-repeat center / cover;
+    text-shadow: 0 2px 2px rgba(#000, 0.2);
+    box-sizing: border-box;
+
+    &::before {
+        content: "";
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        background: linear-gradient(to top, rgba(#000, 0.25), rgba(#000, 0.1));
+    }
+
+}
+
+.calendar__date {
+    padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
+    grid-gap: 10px;
+    box-sizing: border-box;
+}
+
+.calendar__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    font-weight: 600;
+    color: #262626;
+
+    &:nth-child(7) {
+        color: #ff685d;
+    }
+}
+
+.calendar__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 25px;
+    color: #262626;
+
+    &:nth-child(7n) {
+        color: #ff685d;
+        font-weight: 700;
+    }
+}
+
+.submit_button {
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: 3em;
+    text-align: center;
+    background-color: green;
+    border-style: solid;
+    color: white;
+
+    width: 100%;
+    display: block;
+}
+
+.modify_button {
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: 3em;
+    text-align: center;
+    background-color: yellow;
+    border-style: solid;
+    color: black;
+
+    width: 100%;
+    display: block;
+}
+
+.cancel_button {
+    padding: 1em;
+    padding-left: 2em;
+    padding-right: 2em;
+    margin-bottom: 3em;
+    text-align: center;
+    background-color: red;
+    border-style: solid;
+    border-color: black;
+    color: white;
+    
+    width: 100%;
+    display: block;
+}

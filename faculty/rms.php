@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -21,125 +22,6 @@
 
         h1 {
             font-size: 2em;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        #viewpoint_perspective {
-            padding-top: 0.05em;
-            padding-bottom: 0.5em;
-            font-family: "Times New Roman", Times, serif;
-            font-size: 13px;
-            color: white;
-            text-align: center;
-            background-color: #212529;
-        }
-
-        #viewpoint_perspective a {
-            color: #0000EE;
-            font-size: 15px;
-        }
-
-        /* Remove the navbar's default margin-bottom and rounded borders */
-        .navbar {
-            margin-bottom: 0;
-            border-radius: 0;
-        }
-
-        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-        .row.content {
-            height: 450px
-        }
-
-        /* Set gray background color and 100% height */
-        .sidenav {
-            padding-top: 20px;
-            background-color: #f1f1f1;
-            height: 100%;
-        }
-
-        /* Set black background color, white text and some padding */
-        footer {
-            background-color: #555;
-            color: white;
-            padding: 15px;
-        }
-
-        /* On small screens, set height to 'auto' for sidenav and grid */
-        @media screen and (max-width: 767px) {
-            .sidenav {
-                height: auto;
-                padding: 15px;
-            }
-
-            .row.content {
-                height: auto;
-            }
-        }
-
-        .calendar {
-            width: 300px;
-            padding-top: 1em;
-            background-color: #fff;
-            box-shadow: 0 5px 50px rgba(#000, 0.5);
-            border-radius: 8px;
-        }
-
-        .calendar__picture {
-            position: relative;
-            height: 200px;
-            padding: 20px;
-            color: #fff;
-            background: #262626 url("https://th.bing.com/th/id/OIP.aBM_2jn3Ar-ACQHK7oyb-wHaFP?rs=1&pid=ImgDetMain") no-repeat center / cover;
-            text-shadow: 0 2px 2px rgba(#000, 0.2);
-            box-sizing: border-box;
-
-            &::before {
-                content: "";
-                left: 0;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                position: absolute;
-                background: linear-gradient(to top, rgba(#000, 0.25), rgba(#000, 0.1));
-            }
-
-        }
-
-        .calendar__date {
-            padding: 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(25px, 1fr));
-            grid-gap: 10px;
-            box-sizing: border-box;
-        }
-
-        .calendar__day {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            font-weight: 600;
-            color: #262626;
-
-            &:nth-child(7) {
-                color: #ff685d;
-            }
-        }
-
-        .calendar__number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 25px;
-            color: #262626;
-
-            &:nth-child(7n) {
-                color: #ff685d;
-                font-weight: 700;
-            }
         }
 
         .upcoming-body,
@@ -174,6 +56,14 @@
             margin-bottom: 16px;
             resize: vertical;
         }
+
+        .col-sm-2.sidenav {
+            height: 160%;
+        }
+
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 
@@ -181,38 +71,67 @@
     <?php
     $output = ''; // Initialize variable
     $inputValue = htmlspecialchars($_POST['value'] ?? '');
-    $hideForm = false;
 
+    // Display information
+    $displaySubmitBtn = true;
+    $displayModifyBtn = false;
+
+    // Submit button clicked, display message
     if (isset($_POST['submitBtn'])) {
-        $message = "Room request submitted! Awaiting review.";
+        $message = "Room information submitted! Awaiting review.";
         echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
-    // Removed redundant `if-else` logic and simplified `$style` assignment
-    $style = $hideForm ? "display: none;" : "";
+    // Modify button clicked, display message
+    if (isset($_POST['modifyBtn'])) {
+        $message = "Room information modified! Awaiting review.";
+        echo "<script type='text/javascript'>alert('$message');</script>";
+    }
 
-    // Use the switch block to determine $output and update $hideForm
+    // Use the switch block to determine $output and update $changeSubmitBtn
     switch ($inputValue) {
-        // Example unavailable day
+        // Example "normally" unavailable day, modify button added
+        case "16":
+            $output = "A room is already booked on November 16th, 2025!\nPlease select a new date, or edit the room here.";
+            $displayModifyBtn = true;
+            $displaySubmitBtn = false;
+            break;
+
+        // Example "normally" unavailable day, modify button added
+        case "22":
+            $output = "A room is already booked on November 22nd, 2025!\nPlease select a new date, or edit the room here.";
+            $displayModifyBtn = true;
+            $displaySubmitBtn = false;
+            break;
+
+        // Example "normally" unavailable day, modify button added
         case "23":
-            $output = "All rooms are booked for November 23rd, 2025!\nPlease select a new date.";
-            $hideForm = true;
+            $output = "A room is already booked on November 23rd, 2025!\nPlease select a new date, or edit the room here.";
+            $displayModifyBtn = true;
+            $displaySubmitBtn = false;
             break;
-        // Example unavailable day
-        case "27":
-            $output = "All rooms are booked for November 27th, 2025!\nPlease select a new date.";
-            break;
-        // User clicks submit in the form after filling out information
+
+        // User clicks 'Submit' button that submits information for a new Room
         case "Submit":
-            $message = "Room request submitted!\nAwaiting review.";
+            $message = "Room request submitted!\nAwaiting review from Admin.";
             echo "<script type='text/javascript'>alert('$message');</script>";
+            break;
+
+        // User clicks 'Modify Room' button, which modifies an Room and notifies an Admin (not included in this code)
+        case "Modify":
+            $message = "Room modification submitted!\nAwaiting review from Admin.";
+            echo "<script type='text/javascript'>alert('$message');</script>";
+            break;
+
+        // All Rooms are available for the selected date
         default:
-            $output = "All rooms are available today! Please select a time you'd like to reserve.";
+            $output = "All Room times are available today! Please fill out your Room information.";
+
+            $displaySubmitBtn = true;
+            $displayModifyBtn = false;
             break;
     }
 
-    // Reassign `$style` after `$hideForm` is potentially updated
-    $style = $hideForm ? "display: none;" : "";
     ?>
 
     <!-- Navbar -->
@@ -291,23 +210,25 @@
                                     <div class="calendar__number" style="background-color: aliceblue;"><input
                                             type="submit" value="14" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="15" name="value"></div>
-                                    <div class="calendar__number"><input type="submit" value="16" name="value"></div>
+                                    <div class="calendar__number"><input type="submit" value="16" name="value"
+                                            style="background-color: pink;"></div>
                                     <div class="calendar__number"><input type="submit" value="17" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="18" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="19" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="20" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="21" name="value"></div>
-                                    <div class="calendar__number"><input type="submit" value="22" name="value"></div>
-                                    <div class="calendar__number" style="color: gray; text-decoration: line-through;">
-                                        <input type="submit" value="23" name="value">
+                                    <div class="calendar__number"><input type="submit" value="22" name="value"
+                                            style="background-color: pink;"></div>
+
+                                    <div class="calendar__number">
+                                        <input type="submit" value="23" name="value" style="background-color: pink;">
                                     </div>
                                     <div class="calendar__number"><input type="submit" value="24" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="25" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="26" name="value"></div>
-                                    <div class="calendar__number"><input type="submit" value="27" name="value"
-                                            style="color: gray; text-decoration: line-through;"></div>
-                                    <div class="calendar__number" style="background-color: paleturquoise;"><input
-                                            type="submit" value="28" name="value"></div>
+                                    <div class="calendar__number"><input type="submit" value="27" name="value" "></div>
+
+                                    <div class=" calendar__number"><input type="submit" value="28" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="29" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="30" name="value"></div>
                             </form>
@@ -315,7 +236,7 @@
                     </div>
                 </div>
 
-                <!-- Upcoming Events Body -->
+                <!-- Upcoming Rooms Body -->
                 <div class="col-sm-8">
                     <div clas="upcoming-body">
                         <div id="output">
@@ -328,12 +249,23 @@
 
                             <div style="<?php echo $style; ?>">
                                 <form action="" method="POST">
+                                    <!-- First Name -->
                                     <label for="fname">First Name</label>
                                     <input type="text" id="fname" name="firstname" placeholder="Enter first name...">
 
+                                    <!-- Last Name -->
                                     <label for="lname">Last Name</label>
                                     <input type="text" id="lname" name="lastname" placeholder="Enter last name...">
 
+                                    <!-- Reserver -->
+                                    <label for="time">Reserving for:</label>
+                                    <select id="time" name="time">
+                                        <option value="reserver_val_1">Student</option>
+                                        <option value="reserver_val_2">Faculty</option>
+                                        <option value="reserver_val_3">Admin</option>
+                                    </select>
+
+                                    <!-- Time -->
                                     <label for="time">Time</label>
                                     <select id="time" name="time">
                                         <option value="time_val_1">10:30 A.M. - 11:30 A.M.</option>
@@ -342,7 +274,45 @@
                                         <option value="time_val_4">3:30 P.M. - 4:15 P.M.</option>
                                         <option value="time_val_5">5:00 P.M. - 7:15 P.M.</option>
                                     </select>
-                                    <input type="submit" value="Submit" name="submitBtn">
+
+                                    <!-- Room Number -->
+                                    <label for="roomNum">Room Number</label>
+                                    <select id="roomNum" name="roomNum">
+                                        <option value="room_num_1">1052</option>
+                                        <option value="room_num_2">1056</option>
+                                        <option value="room_num_3">1094</option>
+                                        <option value="room_num_4">1103</option>
+                                        <option value="room_num_5">1106</option>
+                                    </select>
+
+                                    <!-- Submit Room Information -->
+                                    <div class="<?php echo $displaySubmitBtn ? '' : 'hidden'; ?>">
+                                        <input type="submit" type="submit" class="submit_button" value="Submit Request"
+                                            name="submitBtn">
+                                    </div>
+
+                                    <!-- (hidden unless an occupied date is selected) -->
+                                    <div class="<?php echo $displayModifyBtn ? '' : 'hidden'; ?>">
+                                        <!-- Warning just above the "Modify Room" button -->
+                                        <p class="warning_message">Warning! You are modifying a room. Clicking
+                                            "Modify
+                                            Room" OR "Cancel Reservation" will request an admin to review this
+                                            modification.</p> <br>
+
+                                        <!-- Modify Room Button -->
+                                        <div class="col-sm-6">
+                                            <input type="submit" type="submit" class="modify_button" value="Modify Room"
+                                                name="modifyBtn">
+                                        </div>
+
+                                        <!-- Cancel Room Button -->
+                                        <div class="col-sm-6">
+                                            <input type="submit" type="submit" class="cancel_button"
+                                                value="Cancel Room Reservation" name="cancelBtn">
+                                        </div>
+
+                                    </div>
+
                                 </form>
                                 </p>
                             </div>
