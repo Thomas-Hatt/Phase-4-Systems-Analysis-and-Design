@@ -132,6 +132,7 @@ a {
     text-align: center;
     background-color: green;
     border-style: solid;
+    border-color: black;
     color: white;
 
     width: 100%;
@@ -162,7 +163,21 @@ a {
     border-style: solid;
     border-color: black;
     color: white;
-    
+
     width: 100%;
     display: block;
+}
+
+/* Numeric Updown */
+.quantity_updown {
+    width: 90px;
+    height: 40px;
+    padding: 5px 10px;
+    border: 2px solid #4b91dd;
+    border-radius: 20px;
+    background-color: #F9F9F9;
+    color: #333;
+    outline: none;
+    text-align: center;
+    margin-bottom: 1.5em;
 }

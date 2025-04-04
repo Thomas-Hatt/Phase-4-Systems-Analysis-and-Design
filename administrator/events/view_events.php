@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Faculty | Rooms</title>
+    <title>Admin | View Events</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -58,7 +58,7 @@
         }
 
         .col-sm-2.sidenav {
-            height: 160%;
+            height: 220%;
         }
 
         .hidden {
@@ -78,60 +78,48 @@
 
     // Submit button clicked, display message
     if (isset($_POST['submitBtn'])) {
-        $message = "Room information submitted! Awaiting review.";
+        $message = "Event information submitted! Awaiting review.";
         echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
     // Modify button clicked, display message
     if (isset($_POST['modifyBtn'])) {
-        $message = "Room information modified! Awaiting review.";
-        echo "<script type='text/javascript'>alert('$message');</script>";
-    }
-
-    // Cancel button clicked, display message
-    if (isset($_POST['cancelBtn'])) {
-        $message = "Previous room request cancelled! Awaiting review.";
+        $message = "Event information modified! Awaiting review.";
         echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
     // Use the switch block to determine $output and update $changeSubmitBtn
     switch ($inputValue) {
-        // Example "normally" unavailable day, modify button added
-        case "16":
-            $output = "A room is already booked on November 16th, 2025!\nPlease select a new date, or edit the room here.";
-            $displayModifyBtn = true;
-            $displaySubmitBtn = false;
-            break;
-
-        // Example "normally" unavailable day, modify button added
-        case "22":
-            $output = "A room is already booked on November 22nd, 2025!\nPlease select a new date, or edit the room here.";
-            $displayModifyBtn = true;
-            $displaySubmitBtn = false;
-            break;
 
         // Example "normally" unavailable day, modify button added
         case "23":
-            $output = "A room is already booked on November 23rd, 2025!\nPlease select a new date, or edit the room here.";
+            $output = "An event is already booked on November 23rd, 2025!\nPlease select a new date, or edit the event here.";
             $displayModifyBtn = true;
             $displaySubmitBtn = false;
             break;
 
-        // User clicks 'Submit' button that submits information for a new Room
+        // Example "normally" unavailable day, modify button added
+        case "28":
+            $output = "An event is already booked on November 28th, 2025!\nPlease select a new date, or edit the event here.";
+            $displayModifyBtn = true;
+            $displaySubmitBtn = false;
+            break;
+
+        // User clicks 'Submit' button that submits information for a new event
         case "Submit":
-            $message = "Room request submitted!\nAwaiting review from Admin.";
+            $message = "Event request submitted!\nAwaiting review from Admin.";
             echo "<script type='text/javascript'>alert('$message');</script>";
             break;
 
-        // User clicks 'Modify Room' button, which modifies an Room and notifies an Admin (not included in this code)
+        // User clicks 'Modify Event' button, which modifies an event and notifies an Admin (not included in this code)
         case "Modify":
-            $message = "Room modification submitted!\nAwaiting review from Admin.";
+            $message = "Event modification submitted!\nAwaiting review from Admin.";
             echo "<script type='text/javascript'>alert('$message');</script>";
             break;
 
-        // All Rooms are available for the selected date
+        // All events are available for the selected date
         default:
-            $output = "All Room times are available today! Please fill out your Room information.";
+            $output = "All event times are available today! Please fill out your event information.";
 
             $displaySubmitBtn = true;
             $displayModifyBtn = false;
@@ -153,13 +141,13 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="events.php">Events</a></li>
-                    <li class="active"><a href="#">Rooms</a></li>
-                    <li><a href="equipment/eqpmt_landing_page.html">Equipment</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li class="active"><a href="events_landing_page.html">Events</a></li>
+                    <li><a href="../rms/rms_landing_page.html">Rooms</a></li>
+                    <li><a href="../equipment/eqpmt_landing_page.html">Equipment</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Jane Doe</a></li>
+                    <li><a href="#">Jacob James</a></li>
                 </ul>
             </div>
         </div>
@@ -167,7 +155,7 @@
 
     <!-- Viewpoint Perspective -->
     <div class="position-absolute" id="viewpoint_perspective">
-        <h1>Faculty View</h1>
+        <h1>Administrator View</h1>
         <a href="../index.html">Return Home</a>
     </div>
 
@@ -216,25 +204,24 @@
                                     <div class="calendar__number" style="background-color: aliceblue;"><input
                                             type="submit" value="14" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="15" name="value"></div>
-                                    <div class="calendar__number"><input type="submit" value="16" name="value"
-                                            style="background-color: pink;"></div>
+                                    <div class="calendar__number"><input type="submit" value="16" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="17" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="18" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="19" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="20" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="21" name="value"></div>
-                                    <div class="calendar__number"><input type="submit" value="22" name="value"
-                                            style="background-color: pink;"></div>
+                                    <div class="calendar__number"><input type="submit" value="22" name="value"></div>
 
                                     <div class="calendar__number">
-                                        <input type="submit" value="23" name="value" style="background-color: pink;">
+                                        <input type="submit" value="23" name="value" style="background-color: blue;">
                                     </div>
                                     <div class="calendar__number"><input type="submit" value="24" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="25" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="26" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="27" name="value" "></div>
 
-                                    <div class=" calendar__number"><input type="submit" value="28" name="value"></div>
+                                    <div class=" calendar__number"><input type="submit" value="28" name="value"
+                                            style="background-color: blue;"></div>
                                     <div class="calendar__number"><input type="submit" value="29" name="value"></div>
                                     <div class="calendar__number"><input type="submit" value="30" name="value"></div>
                             </form>
@@ -242,86 +229,64 @@
                     </div>
                 </div>
 
-                <!-- Upcoming Rooms Body -->
+                <!-- Upcoming Events Body -->
                 <div class="col-sm-8">
                     <div clas="upcoming-body">
                         <div id="output">
 
                             <!-- PHP Output -->
-
                             <p>
                                 <?php echo $output;
                                 ?>
+                            <form action="" method="POST">
+                                <label for="fname">First Name</label>
+                                <input type="text" id="fname" name="firstname" placeholder="Enter first name...">
 
-                            <div style="<?php echo $style; ?>">
-                                <form action="" method="POST">
-                                    <!-- First Name -->
-                                    <label for="fname">First Name</label>
-                                    <input type="text" id="fname" name="firstname" placeholder="Enter first name...">
+                                <label for="lname">Last Name</label>
+                                <input type="text" id="lname" name="lastname" placeholder="Enter last name...">
 
-                                    <!-- Last Name -->
-                                    <label for="lname">Last Name</label>
-                                    <input type="text" id="lname" name="lastname" placeholder="Enter last name...">
+                                <label for="time">Time</label>
+                                <select id="time" name="time">
+                                    <option value="time_val_1">10:30 A.M. - 11:30 A.M.</option>
+                                    <option value="time_val_2">12:00 P.M. - 1:00 P.M.</option>
+                                    <option value="time_val_3">2:00 P.M. - 3:00 P.M.</option>
+                                    <option value="time_val_4">3:30 P.M. - 4:15 P.M.</option>
+                                    <option value="time_val_5">5:00 P.M. - 7:15 P.M.</option>
+                                </select>
 
-                                    <!-- Reserver -->
-                                    <label for="time">Reserving for:</label>
-                                    <select id="time" name="time">
-                                        <option value="reserver_val_1">Student</option>
-                                        <option value="reserver_val_2">Faculty</option>
-                                        <option value="reserver_val_3">Admin</option>
-                                    </select>
+                                <label for="eventTitle">Event Title</label>
+                                <input type="text" id="eventTitle" name="eventTitle"
+                                    placeholder="Write a title for your event...">
 
-                                    <!-- Time -->
-                                    <label for="time">Time</label>
-                                    <select id="time" name="time">
-                                        <option value="time_val_1">10:30 A.M. - 11:30 A.M.</option>
-                                        <option value="time_val_2">12:00 P.M. - 1:00 P.M.</option>
-                                        <option value="time_val_3">2:00 P.M. - 3:00 P.M.</option>
-                                        <option value="time_val_4">3:30 P.M. - 4:15 P.M.</option>
-                                        <option value="time_val_5">5:00 P.M. - 7:15 P.M.</option>
-                                    </select>
+                                <label for="eventDesc">Event Description</label>
+                                <textarea id="subject" name="eventDesc" placeholder="Write about your event!..."
+                                    style="height:150px; resize: none;"></textarea>
 
-                                    <!-- Room Number -->
-                                    <label for="roomNum">Room Number</label>
-                                    <select id="roomNum" name="roomNum">
-                                        <option value="room_num_1">1052</option>
-                                        <option value="room_num_2">1056</option>
-                                        <option value="room_num_3">1094</option>
-                                        <option value="room_num_4">1103</option>
-                                        <option value="room_num_5">1106</option>
-                                    </select>
+                                <!-- Submit Event Information -->
+                                <div class="<?php echo $displaySubmitBtn ? '' : 'hidden'; ?>">
+                                    <input type="submit" class="submit_button" value="Submit Request" name="submitBtn">
+                                </div>
 
-                                    <!-- Submit Room Information -->
-                                    <div class="<?php echo $displaySubmitBtn ? '' : 'hidden'; ?>">
-                                        <input type="submit" type="submit" class="submit_button" value="Submit Request"
-                                            name="submitBtn">
+                                <!-- (hidden unless an occupied date is selected) -->
+                                <div class="<?php echo $displayModifyBtn ? '' : 'hidden'; ?>">
+
+                                    <!-- Warning just above the "Modify Event" button -->
+                                    <p class="warning_message">Warning! You are modifying an event. Clicking
+                                        "Modify
+                                        Event" will request an admin to review this modification. <br> <br> You can
+                                        review
+                                        this modification in the <a href="approve_events.php">Approve / Deny
+                                            Webpage.</a></p>
+
+                                    <!-- Modify Event Button -->
+                                    <div class="col-sm-6">
+                                        <input type="submit" type="submit" class="modify_button" value="Modify Event"
+                                            name="modifyBtn">
                                     </div>
+                                </div>
 
-                                    <!-- (hidden unless an occupied date is selected) -->
-                                    <div class="<?php echo $displayModifyBtn ? '' : 'hidden'; ?>">
-                                        <!-- Warning just above the "Modify Room" button -->
-                                        <p class="warning_message">Warning! You are modifying a room. Clicking
-                                            "Modify
-                                            Room" OR "Cancel Reservation" will request an admin to review this
-                                            modification.</p> <br>
-
-                                        <!-- Modify Room Button -->
-                                        <div class="col-sm-6">
-                                            <input type="submit" type="submit" class="modify_button" value="Modify Room"
-                                                name="modifyBtn">
-                                        </div>
-
-                                        <!-- Cancel Room Button -->
-                                        <div class="col-sm-6">
-                                            <input type="submit" type="submit" class="cancel_button"
-                                                value="Cancel Room Reservation" name="cancelBtn">
-                                        </div>
-
-                                    </div>
-
-                                </form>
-                                </p>
-                            </div>
+                            </form>
+                            </p>
                             <!-- End of PHP Output -->
 
                         </div>

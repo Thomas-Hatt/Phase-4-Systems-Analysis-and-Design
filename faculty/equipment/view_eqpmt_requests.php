@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Faculty | Rooms</title>
+    <title>Faculty | Request Equipment Form</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -59,7 +59,7 @@
 
         .col-sm-2.sidenav {
             position: relative;
-            height: 330%;
+            height: 250%;
         }
 
         .hidden {
@@ -71,8 +71,6 @@
             text-underline-position: under;
             margin-bottom: 1.5em;
         }
-
-
 
         .checkbox-wrapper-64 input[type="checkbox"] {
             visibility: hidden;
@@ -144,14 +142,13 @@
 </head>
 
 <body>
-
     <?php
     $output = ''; // Initialize variable
     $inputValue = htmlspecialchars($_POST['value'] ?? '');
 
-    // Submit button clicked, display message
-    if (isset($_POST['submitBtn'])) {
-        $message = "Equipment request submitted! Awaiting review.";
+    // Cancel button clicked, display message
+    if (isset($_POST['cancelBtn'])) {
+        $message = "Equipment Request cancelled! Awaiting review.";
         echo "<script type='text/javascript'>alert('$message');</script>";
     }
 
@@ -170,10 +167,10 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="event.php">Events</a></li>
-                    <li><a href="rms.php">Rooms</a></li>
-                    <li class="active"><a href="#">Equipment</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../events.php">Events</a></li>
+                    <li><a href="../rms.php">Rooms</a></li>
+                    <li class="active"><a href="eqpmt_landing_page.html">Equipment</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Jane Doe</a></li>
@@ -198,113 +195,64 @@
 
                 <div class="upcoming-body">
                     <div id="output">
-                        <h1 class="main_header">Equipment Request Form</h1>
+                        <h1 class="main_header">Viewing Current Equipment Requests</h1>
+                        <hr>
 
-                        <!-- Available Equipment -->
-                        <!-- Checkbox wrapper found at https://getcssscan.com/css-checkboxes-examples -->
-                        <h2 style="margin-bottom: 1.5em;">Available Equipment:</h2>
-
-                        <div class="row" style="margin-left: 2em;">
-                            <div class="col-sm text-left">
-                                <div class="checkbox-wrapper-64">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-left">
-                                <p>Cool Printer #123</p>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-left: 2em;">
-                            <div class="col-sm text-left">
-                                <div class="checkbox-wrapper-64">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-left">
-                                <p>Cool Printer #123</p>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-left: 2em;">
-                            <div class="col-sm text-left">
-                                <div class="checkbox-wrapper-64">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-left">
-                                <p>Cool Printer #123</p>
-                            </div>
-                        </div>
-
-                        <div class="row" style="margin-left: 2em;">
-                            <div class="col-sm text-left">
-                                <div class="checkbox-wrapper-64">
-                                    <label class="switch">
-                                        <input type="checkbox">
-                                        <span class="slider"></span>
-                                    </label>
-                                </div>
-                            </div>
-
-                            <div class="col-sm text-left">
-                                <p>Cool Printer #123</p>
-                            </div>
-                        </div>
-
-                        <br>
-                        <br>
-
-                        <!-- Contact Form / Contact Information -->
-
-                        <form action="" method="POST">
-                            <label for="fname">First Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Enter first name...">
-
-                            <label for="lname">Last Name</label>
-                            <input type="text" id="lname" name="lastname" placeholder="Enter last name...">
-
-                            <label for="empID">Employee ID</label>
-                            <input type="text" id="empID" name="employeeID" placeholder="Enter your Employee ID...">
-
-                            <label for="eventDesc">Need for Equipment Request</label>
-                            <textarea id="subject" name="eventDesc"
-                                placeholder="Write about the reason for your request!..."
-                                style="height:150px; resize: none;"></textarea>
-
-                            <!-- Submit User Information -->
-                            <input type="submit" class="submit_button" value="Submit Request" name="submitBtn">
-
-                        </form>
+                        <!-- Example Request #1 -->
+                        <h2 style="margin-bottom: 1.5em;">Current Request #1:</h2>
+                        <p>
+                            <strong>Date Requested:</strong> August 16th, 2025 (2 days ago)<br>
+                            <strong>Equipment Requested:</strong> 2 Printers, 10 Office Chairs <br>
+                            <strong>Status:</strong> Pending <br>
+                            <strong>Reason for Request:</strong> <br>
+                        <p>Setting up the most recently built classroom and require some extra equipment for completion.
                         </p>
 
+
+                        <!-- Warning just above the "Cancel Reservation" button -->
+                        <p class="warning_message" style="width: 50%; font-size: 14px; margin-top: 1.2em;">Warning! Clicking
+                            "Cancel Request" will request an admin to review this
+                            modification.</p> <br>
+                        <!-- Cancel Room Button -->
+                        <form method="POST" action="">
+                            <div class="col-sm-6">
+                                <input type="submit" type="submit" class="cancel_button" value="Cancel Request"
+                                    name="cancelBtn" style="padding: 0.5em; width: 60%; margin-top: 1.5em;">
+                            </div>
+                        </form>
+                        <hr>
+                        <br>
+                        <br>
+
+                        <!-- Dummy <h2> because of some glitches -->
+                        <h2 style="margin-bottom: 1.5em;"></h2>
+
+                        <!-- Past Equipment Requests -->
+                        <hr>
+                        <h2 style="margin-bottom: 1.5em;">Past Equipment Requests</h2>
+                        <!-- Example Request #2 -->
+                        <h2 style="margin-bottom: 1.5em;">Past Request #1:</h2>
+                        <p>
+                            <strong>Date Requested:</strong> August 11th, 2025 (7 days ago)<br>
+                            <strong>Equipment Requested:</strong> 2 Cameras<br>
+                            <strong>Status:</strong> Approved <br>
+                            <strong>Reason for Request:</strong> <br>
+                        <p>The photography club needs some extra cameras for the upcoming event.
+                        </p>
+                        <hr>
+                        <br>
                     </div>
-                    <hr>
                 </div>
-
-
-
-
             </div>
+
             <div class="col-sm-2 sidenav">
             </div>
         </div>
 
+
+
     </div>
-    </div>
-    </div>
+
 
     <!-- Footer -->
     <footer class="container-fluid text-center">

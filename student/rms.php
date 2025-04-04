@@ -236,7 +236,10 @@
                                         <option value="room_num_4">1103</option>
                                         <option value="room_num_5">1106</option>
                                     </select>
-                                    <input type="submit" value="Submit" name="submitBtn">
+                                    <div>
+                                        <input type="submit" class="submit_button" value="Submit Request"
+                                            name="submitBtn">
+                                    </div>
                                 </form>
                                 </p>
                             </div>

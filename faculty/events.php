@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Faculty | Rooms</title>
+    <title>Faculty | Events</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -144,7 +144,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li class="active"><a href="#">Events</a></li>
                     <li><a href="rms.php">Rooms</a></li>
-                    <li><a href="equipment.php">Equipment</a></li>
+                    <li><a href="equipment/eqpmt_landing_page.html">Equipment</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Jane Doe</a></li>

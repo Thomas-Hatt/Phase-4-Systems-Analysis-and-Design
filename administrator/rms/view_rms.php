@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-    <title>Faculty | Rooms</title>
+    <title>Admin | Rooms</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../../styles.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
@@ -153,13 +153,13 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="events.php">Events</a></li>
-                    <li class="active"><a href="#">Rooms</a></li>
-                    <li><a href="equipment/eqpmt_landing_page.html">Equipment</a></li>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../events/events_landing_page.html">Events</a></li>
+                    <li class="active"><a href="rms_landing_page.html">Rooms</a></li>
+                    <li><a href="../equipment/eqpmt_landing_page.html">Equipment</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Jane Doe</a></li>
+                    <li><a href="#">Jacob James</a></li>
                 </ul>
             </div>
         </div>
@@ -167,7 +167,7 @@
 
     <!-- Viewpoint Perspective -->
     <div class="position-absolute" id="viewpoint_perspective">
-        <h1>Faculty View</h1>
+        <h1>Administrator View</h1>
         <a href="../index.html">Return Home</a>
     </div>
 
@@ -303,7 +303,10 @@
                                         <p class="warning_message">Warning! You are modifying a room. Clicking
                                             "Modify
                                             Room" OR "Cancel Reservation" will request an admin to review this
-                                            modification.</p> <br>
+                                            modification. <br> <br> You can
+                                            review
+                                            this modification in the <a href="approve_rooms.php">Approve / Deny
+                                                Webpage.</p> <br>
 
                                         <!-- Modify Room Button -->
                                         <div class="col-sm-6">

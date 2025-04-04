@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Faculty | Home</title>
+  <title>Admin | Home</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -31,7 +31,7 @@
     }
 
     .col-sm-2.sidenav {
-      height: 160%;
+      height: 200%;
     }
   </style>
 </head>
@@ -52,12 +52,12 @@
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
-          <li><a href="events.php">Events</a></li>
-          <li><a href="rms.php">Rooms</a></li>
+          <li><a href="events/events_landing_page.html">Events</a></li>
+          <li><a href="rms/rms_landing_page.html">Rooms</a></li>
           <li><a href="equipment/eqpmt_landing_page.html">Equipment</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Jane Doe</a></li>
+          <li><a href="#">Jacob James</a></li>
         </ul>
       </div>
     </div>
@@ -65,7 +65,7 @@
 
   <!-- Viewpoint Perspective -->
   <div class="position-absolute" id="viewpoint_perspective">
-    <h1>Faculty View</h1>
+    <h1>Administrator View</h1>
     <a href="../index.html">Return Home</a>
   </div>
 
@@ -78,7 +78,7 @@
       <div class="col-sm-8 text-left">
         <h1 id="title">Welcome!</h1>
         <p>This is a mockup of the Futura University Campus Resourcement Management System (CRMS), and you are currently
-          viewing the website as a Faculty.</p>
+          viewing the website as an Administrator.</p>
         <p>Here is the list of the information that you have access to:</p>
         <hr>
 
@@ -91,6 +91,9 @@
               <li>Change Event Day</li>
               <li>Change Event Title</li>
               <li>Change Event Description</li>
+              <li>Delete Events</li>
+              <li>Approve/Deny Event Creation</li>
+              <li>Cancel Events</li>
             </ul>
           </li>
           <br>
@@ -100,6 +103,8 @@
             <li>Reserve a Room</li>
             <li>Edit a Room Reservation</li>
             <li>Cancel Room Reservation</li>
+            <li>Approve/Deny Room Reservations</li>
+            <li>Delete Room Reservations</li>
           </ul>
           </li>
           <br>
@@ -110,6 +115,8 @@
             <li>Request Equipment</li>
             <li>Cancel Equipment Requests</li>
             <li>Confirm Equipment Request</li>
+            <li>Approve/Deny Equipment Requests</li>
+            <li>Delete Equipment Request</li>
           </ul>
           </li>
         </ul>
